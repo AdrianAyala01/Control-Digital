@@ -52,4 +52,31 @@ El docente suministra material de estudio que explica de forma clara cada uno de
   > Este apoyo bibliográfico se enfoca más a la parte matemática.
 
 
+01/08/2024
+# Señales Analógicas y Digitales y convertidores ADC y DAC 
+
+
+
+## 1. Señales Analógicas y Digitales
+### 1.1 Señales Análogicas: 
+>🔑 *Definición:* Señal continua que puede tomar cualquier valor en el dominio del tiempo.
+>🔑 *Caracteristicas:* Es muy limitado, pero es más exacto que el digital.
+### 1.2 Señales Digitales:
+>🔑 *Definición:* Solo tiene 2 posibles valores o estados. Este tipo de señales tiene forma de onda cuadrada.
+>🔑 *Caracteristicas:* *La exactitud
+* Errores de implementaciöm.
+* Flexibilidad (Solo necesita cambio de software).
+* Velocidad (Tiempo real. más baja que la análoga).
+* Costos (Más barata).
+
+![Figura de prueba](images/plantilla/Captura2.PNG)
+
+Figura 1. Figura de prueba
+
+## 2. Conversión Análoga a Digital
+
+
+
+
+
 
