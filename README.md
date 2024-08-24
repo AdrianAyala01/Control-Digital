@@ -9,7 +9,7 @@ El semestre cubrirá una variedad de temas, que incluyen:
 * Transformada Z.
 * Función de Transferencia.
 * Estabilidad
-  > Se enfatiza en el Test de Jury. 
+  >🔑 Enfoque: Se enfatiza en el Test de Jury. 
 * Discrtización de controladores.
 * Métodos algebraicos.
 * Respuesta en frecuencia.
