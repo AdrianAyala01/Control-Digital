@@ -224,7 +224,7 @@ Figura 9.
 
 * Subir la retención, implica un incremento en el costo del conversor.
 ### 5.2 First Order Hold (FOH)
->🔑 Ventaja: Toma más valores, es decir, puede tener un analisis de más información ya que tiene un modelo lineal.
+>🔑 Ventaja: Toma más valores, es decir, puede tener un análisis de más información ya que tiene un modelo lineal.
 ### 5.3 Second Order Hold (SOH)
 >🔑 Ventaja: Modelo parabólico durante intervalo de muestreo.
 
@@ -236,3 +236,14 @@ El objetivo fundamental de un conversor es servir como un puente entre el mundo 
 [2] FabioLeon, “¿Qué son señales analógicas y digitales en electrónica?,” DynamoElectronics, 13-Jul-2022. [Online]. Available: https://www.dynamoelectronics.com/que-son-senales-analogicas-y-digitales-en-electronica/. [Accessed: 09-Aug-2024].
 [3] “DAC Con Resistencias Ponderadas,” Scribd. [Online]. Available: https://es.scribd.com/document/343360980/DAC-Con-Resistencias-Ponderadas. [Accessed: 10-Aug-2024].
 [4] V. T. las E. De msavalos, “¿Cómo funciona un Conversor Digital-Analógico (DAC) R2R?,” Electrónica + Programación + GNU/Linux, 19-Jan-2021. [Online]. Available: https://electronlinux.wordpress.com/2021/01/19/como-funciona-un-conversor-digital-analogico-dac-r2r/. [Accessed: 10-Aug-2024].
+
+
+22/08/2024
+# ESTABILIDAD EN SISTEMAS DISCRETOS 
+La estabilidad es un concepto clave en el análisis de sistemas de control de movimiento que evolucionan en intervalos discretos de tiempo, ya que un sistema discreto se considera estable si su respuesta a una entrada se mantiene acotada conforme avanza el tiempo. En este contexto, el análisis en el espacio de Laplace mantiene el mismo concepto de estabilidad, aunque la representación de la frontera de estabilidad cambia: En lugar de estar representada por el eje vertical, se representa mediante un círculo en el plano z. Para evaluar la estabilidad de estos sistemas discretos, se utilizan diferentes enfoques, como la estabilidad asintótica, la estabilidad BIBO (Bounded Input-Bounded Output) y el criterio de estabilidad de Jury.
+## Estabilidad absoluta
+>🔑 Definición: Se se aplica un patrón en la entrada y la respuesta (salida) tiene las mismas características, entonces es ESTABLE.
+
+![Figura de prueba](ESTABILIDADLP.PNG)
+
+Figura 10. Estabilidad en LaPlace. 
