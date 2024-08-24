@@ -247,3 +247,26 @@ La estabilidad es un concepto clave en el análisis de sistemas de control de mo
 ![Figura de prueba](ESTABILIDADLP.PNG)
 
 Figura 10. Estabilidad en LaPlace. 
+
+* Con la anterior imagen se tiene la siguiente equivalencia en el plano Z: $$z=e^{Ts}$$
+  Expresando: $$s= \sigma+jw$$
+* Tres situaciones:
+  1. Para $$\sigma>0 \to \lim_{\sigma \to 0} e^{\sigma T} = 1$$
+     $$\lim_{\sigma \to \infty } e^{\sigma T} = \infty $$
+     El sistema es INESTABLE
+  2. Para $$\sigma = 0 \to e^{\sigma T} = 1$$
+     El sistema es marginalmente estable
+  3. Para $$\sigma < 0 \to \lim_{\sigma \to 0} = e^{-\sigma T}=1$$
+     $$\lim_{\sigma \to \infty } = e^{-\sigma T}= 0$$
+     El sistema es ESTABLE
+     
+![Figura de prueba](ESTABILIDADLP.PNG)
+
+Figura 11. Estabilidad en el plano Z.
+* Alejarse del origen, se vuelve más lento.
+* El polo dominante es aquel que está más cerca del radio 1 en el plano z.
+  
+# 💡'Ejercicios'
+
+
+
