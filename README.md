@@ -10,7 +10,7 @@ El semestre cubrirá una variedad de temas, que incluyen:
 * Función de Transferencia.
 * Estabilidad
   >🔑 Enfoque: Se enfatiza en el Test de Jury. 
-* Discrtización de controladores.
+* Discretización de controladores.
 * Métodos algebraicos.
 * Respuesta en frecuencia.
 * Espacio Estados.
@@ -116,8 +116,8 @@ Figura 6.
 * Tp: Es el tiempo de apertura, lo que quiere decir que es el tiempo que pasa desde la retención hasta que se abre el muestreador.
 * Ts: El movimiento constante del interruptor crea capacitancia parásita, un fenómeno que produce un estado transitorio en la señal de salida, por lo que Ts que significa tiempo de establecimiento es el tiempo que necesita la señal para que las oscilaciones desaparezcan.
 
-# 💡'Ejercicios'
-## 1. Se tienen los siguientes datos: 
+## 💡'Ejemplo 1:'
+### Se tienen los siguientes datos: 
 * Señal analógica: [0.3]V
 * Bits de representación: 2 bits
 * $$2^{2}$$ = 4 posibles símbolos
@@ -134,8 +134,8 @@ Figura 6.
 Tabla 1. Valores que se están cuantizando.
 
 * Son $$2^{r}-1$$ posibles símbolos porque se toma el 0.
-
-## 2. Para Arduino: 
+💡'Ejemplo 2:'
+### Para Arduino: 
 * Señal analógica: [0.5]V
 * Bits de representación: 10 bits
 * $$2^{10}$$ = 1024 posibles símbolos
@@ -205,6 +205,7 @@ Figura 8.
 *Nunca se tiene Vout=Vcc aunque se hagan muchas sumas parciales 
 >🔑 Desventaja: Hay relación de resistencias que afectan la tolerancia de las mismas. Además de ello a veces hay que poner FILTROS para no observar saltos de tensión (escalones), pero limita la Freq máxima que se puede obtener.
 # 📚'Ejercicios'
+2. 
 
 ## 4. Modelo matemático conversores A/D y D/A
 * Utilizan mismos componentes. Muestreador y retenedor.
@@ -266,7 +267,40 @@ Figura 11. Estabilidad en el plano Z.
 * Alejarse del origen, se vuelve más lento.
 * El polo dominante es aquel que está más cerca del radio 1 en el plano z.
   
-# 💡'Ejercicios'
+##💡'Ejemplo 1:'
+1. $$G(z)=\frac{4}{z^{3}-7.8z^{2}+13.4z+3}$$
+Se iguala a 0 el denominador y se obtienen los tres polos:
+$$z=5, z=3, z=0.2$$
+Hay un polo dentro del radio de estabiidad, los otros dos polos están por fuera. Sistema INESTABLE
+
+## 💡'Ejemplo 2:'
+$$G(z)= \frac{z-3}{z^{3}-1.5z^{2}+0.66z-0.08}$$
+Los polos son: 
+$$z=0.5, z=0.8, z=0.2$$
+El sistema es ESTABLE porque todos los polos están dentro de circulo unitario.
+
+## 💡'Ejemplo 3:'
+$$G(z)= \frac{-0.075997z+0.0101}{z^{2}-1.5804z+0.6238}$$
+Los polos son: 
+$$z=0.76, z=0.81$$
+El zero sería: 0.132
+
+## 1. Estabilidad Asintótica 
+Se dice que un sistema es asintóticamente estable si su respuesta frente a una variedad de condiciones iniciales decae a cero. Se presenta mediante una ecuación muy sencilla: 
+$$\lim_{k \to \infty } y(k)=0$$
+Con esto se puede decir que si el sistema está limitado pero no decae a 0, entonces es marginalmente estable. El resto de respuestas hará inestable al sistema.
+
+## 2. Estabilidad BIBO(Boundary INPUT,Boundary OUTPUT)
+Una respuesta acotada a una entrada acotada permanece acotada en la salida. Uno de los métodos más comunes para evaluar este tipo de estabilidad es el Test de Jury, que utiliza criterios específicos que un sistema debe cumplir para garantizar su estabilidad.
+### 2.1 Test de Jury 
+Sabiendo que el polinomio caracteristico de una función de transferencia en el plano z, es el siguiente: 
+$$D(z)= a_{0}z^{n}+a_{1}z^{n-1}+...+a_{n-1}z+a_{n}$$
+#### 2.1.1 Condiciones:
+1. $$a_{0}>0$$
+2. $$a_{n} < a_{0}$$
+3. $$P(z)|_{z=1}>0$$
+4. $$P(z)|_{z=1}\to > 0 para n par$$
+
 
 
 
