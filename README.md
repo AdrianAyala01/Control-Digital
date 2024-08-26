@@ -254,20 +254,21 @@ Figura 10. Estabilidad en LaPlace.
 * Tres situaciones:
   1. Para $$\sigma>0 \to \lim_{\sigma \to 0} e^{\sigma T} = 1$$
      $$\lim_{\sigma \to \infty } e^{\sigma T} = \infty $$
-     El sistema es INESTABLE
+     *El sistema es INESTABLE
   2. Para $$\sigma = 0 \to e^{\sigma T} = 1$$
-     El sistema es marginalmente estable
-  3. Para $$\sigma < 0 \to \lim_{\sigma \to 0} = e^{-\sigma T}=1$$
+     *El sistema es marginalmente estable
+  3. Para $$\sigma < 0 \to \lim_{\sigma \to 0} = e^{-\sigma T}=1$$ y 
      $$\lim_{\sigma \to \infty } = e^{-\sigma T}= 0$$
-     El sistema es ESTABLE
+     *El sistema es ESTABLE
      
 ![Figura de prueba](ESTABILIDADLP.PNG)
 
 Figura 11. Estabilidad en el plano Z.
+
 * Alejarse del origen, se vuelve más lento.
 * El polo dominante es aquel que está más cerca del radio 1 en el plano z.
   
-##💡'Ejemplo 1:'
+## 💡'Ejemplo 1:'
 1. $$G(z)=\frac{4}{z^{3}-7.8z^{2}+13.4z+3}$$
 Se iguala a 0 el denominador y se obtienen los tres polos:
 $$z=5, z=3, z=0.2$$
@@ -299,7 +300,41 @@ $$D(z)= a_{0}z^{n}+a_{1}z^{n-1}+...+a_{n-1}z+a_{n}$$
 1. $$a_{0}>0$$
 2. $$a_{n} < a_{0}$$
 3. $$P(z)|_{z=1}>0$$
-4. $$P(z)|_{z=1}\to > 0 para n par$$
+4. $$P(z)|_{z=1}\to > 0 para n par$$ 
+   $$\to < 0 para n impar$$ 
+5. Construir arreglo de Jury. Con tres términos al final se termina de realizar el arreglo.
+>🔑 Condición: Si al menos una no se cumple, el sistema es inmediatamente INESTABLE.
+
+####2.1.2 Criterio de estabilidad de Jury
+
+![Figura de prueba](ESTABILIDADLP.PNG)
+
+Figura 12. Tabla arreglo de Jury 
+
+Este criterio consiste en organizar los coeficientes de las potencias de  z en orden ascendente de acuerdo con sus exponentes. En la segunda fila, se utilizan los mismos coeficientes, pero en orden inverso. Esto permite calcular la siguiente ecuación matemática para determinar los valores requeridos: 
+*Una matriz 2x2 que relaciona la primera columna de la tabla con la ultima pero con los coeficientes invetidos:
+$$b_{n-1}=|\begin{matrix}
+a_{0} & a_{n-1}\\
+a_{n-1} & a_{1}
+\end{matrix}|$$
+Lo que es igual a: 
+$$a_{n}a_{1}-a_{0}a_{n-1}$$
+Se resuelve cada arreglo de matrices hasta llegar a b0, donde:
+$$b_{0}=|\begin{matrix}
+a_{n} & a_{0}\\
+a_{0} & a_{n}
+\end{matrix}|$$
+Lo que es igual a: 
+$$a_{n}a_{n}-a_{0}a_{0}$$
+Se vuelve a rellenar la cuarta fila con los mismos coeficientes pero invertidos y se repite el proceso hasta obtener tres valores al final de la tabla.
+
+##### 2.1.2.1 Condiciones después del arreglo de Jury 
+Después de obtener los tres valores al final del arreglo de Jury, se evaluan las siguientes condiciones:
+1. $$\left| b_{0} \right| = \left| b_{n-1} \right|$$
+2. $$\left| c_{0} \right| = \left| c_{n-2} \right|$$
+3. $$\left| s_{0} \right| = \left| s_{3} \right|$$
+4. Y en el caso de la Img.12, el ultimo valor a evaluar será $$\left| r_{0} \right| = \left| r_{2} \right|$$
+>🔑 Condición: Si al menos una no se cumple, el sistema es inmediatamente INESTABLE.
 
 
 
