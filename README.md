@@ -608,10 +608,10 @@ Después de obtener los tres valores al final del arreglo de Jury, se evaluan la
 
 # 📚Ejercicios 
 1. Se tiene a siguiente función de transferencia:
-   $$G(z)=\frac{2+0.5z^{-1}-0.2z^{-2}}{1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3}$$
+   $$G(z)=\frac{2+0.5z^{-1}-0.2z^{-2}}{1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3}}$$
    * Se transforman las z negativas a positivas para poder realizar de una manera más efectiva el análisis de estabilidad, entonces:
-     $$G(z)=\frac{z^{3}*(2+0.5z^{-1}-0.2z^{-2})}{z^{3}*(1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3})}$$
-     $$G(z)=\frac{2z^{3}+0.5z^{2}-0.2z}{1z^{3}-0.5z^{2}+0.3z-0.1}}$$
+     $$G(z)=\frac{z^{3}*(2+0.5z^{-1}-0.2z^{-2})} {z^{3}*(1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3})}$$
+     $$G(z)=\frac{2z^{3}+0.5z^{2}-0.2z}{1z^{3}-0.5z^{2}+0.3z-0.1}$$
    * Teniendo en z positivas se procede a analizar las condiciones del Test de Jury
      1. $$2>0$$ (Correcto)
      2. $$|-0.1| < 2$$ (Correcto)
