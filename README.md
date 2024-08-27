@@ -244,19 +244,23 @@ El objetivo fundamental de un conversor es servir como un puente entre el mundo 
 
 08/08/24
 # Transformada Z de adelantos y atrasos
-En esta clase se aprendio sobre la transformada Z y la representacion matematica de los sistemas, por medio de las solucion de ecuaciones en diferencia. Encontrando adelantos y atrasos de una señal y asi mismo encontrando sus respectivas funciones de transferencias discretas.
-## 1. Muestreo en terminos matematicos
-Para poder expresar matematicamente una funcion de tiempo continuo en tiempo discreto se debe añadir una variable "K" (que es el numero de muestras de la seña) a la variable "t" del tiempo continuo. 💡 Ejemplo:  $$f(t)=f(kT)$$
+En esta clase se aprendio sobre la transformada Z y la representacion matematica de los sistemas, por medio de las solucion de ecuaciones en diferencia. Encontrando adelantos y atrasos de una señal y así mismo encontrando sus respectivas funciones de transferencias discretas.
+## 1. Muestreo en términos matemáticos
+Para poder expresar matemáticamente una función de tiempo continuo en tiempo discreto se debe añadir una variable "K" (que es el número de muestras de la seña) a la variable "t" del tiempo continuo. 
 
-## 2. Ecuacion en diferencias
-Las ecuaciones de diferencias describen el comportamiento de un sistema en funcion de su entrada y su salida. Las caracteristicas de estas ecuaciones pueden ser homogeneas, lineales e invariantes en el tiempo.
+## 💡Ejemplo 1:  $$f(t)=f(kT)$$
+
+## 2. Ecuación en diferencias
+Las ecuaciones de diferencias describen el comportamiento de un sistema en función de su entrada y su salida. Las caracteristicas de estas ecuaciones pueden ser homogéneas, lineales e invariantes en el tiempo.
 Para poder intenificar sus caracteristicas se puede resumir en esto:
   ### Lineales
   Son aquellas ecuaciones en las que la variable "K" aparece con exponentes de uno y sin ningun producto que la altere. 💡 Ejemplo:  $$y(k)+5y(k-2)+u(k)=0$$
   ### Homogeneas
-  Son aquellas ecuaciones en las que no se conoce la entrada ni aparece en la ecuacion. 💡 Ejemplo:  $$y(k)+5y(k-2)=0$$
+  Son aquellas ecuaciones en las que no se conoce la entrada ni aparece en la ecuacion. 
+  ## 💡 Ejemplo 2:  $$y(k)+5y(k-2)=0$$
   ### Homogeneas
-  Son aquellas ecuaciones en las que la variable "K" aparece con exponentes de dos o mas  y con algun producto que la altere. 💡 Ejemplo:  $$y(k)^2+5y(0.2k)+ u(2k)=0$$
+  Son aquellas ecuaciones en las que la variable "K" aparece con exponentes de dos o mas  y con algun producto que la altere. 
+  ##💡 Ejemplo:  $$y(k)^2+5y(0.2k)+ u(2k)=0$$
 
 ## 3. Solucion de ecuaciones en diferencia
 Estas ecuaciones se pueden resolver por dos metodos: 
@@ -264,7 +268,7 @@ Estas ecuaciones se pueden resolver por dos metodos:
 * Transformada Z
 ### Metodos iterativos 
 Este metodo consiste en calcular la solución paso a paso de la ecuacion a partir de una condición inicial dada y/o conocida. 
-##💡 Ejemplo 1:  $$y(k)=\frac{1}{3}[-2y(k-1)+y(k-2)+2u(k-1)-3u(k-2)]$$
+##💡 Ejemplo 4:  $$y(k)=\frac{1}{3}[-2y(k-1)+y(k-2)+2u(k-1)-3u(k-2)]$$
 * Condiciones iniciales
   $$y(-2)=1, y(-1)=-2, u(k)={ 1, k=0,1,2,3..
                               0 , k<0 }$$
@@ -278,9 +282,9 @@ $$y(2)=\frac{1}{3}[-2(-\frac{10}{9})+\frac{5}{3}+2(1)-3(1)] = \frac{26}{27}$$
 ## Transformada Z
 Es la contraparte de la transformada de LaPlace y por ende sus diferencias son muy diferentes. 
 *LaPLace:
-##💡 Ejemplo 2:  $$L\{f(t)\} = \int_{0}^{\infty} f(t) \cdot e^{-st} \, dt$$
+##💡 Ejemplo 5:  $$L\{f(t)\} = \int_{0}^{\infty} f(t) \cdot e^{-st} \, dt$$
 *Tranzformada Z: 
-##💡 Ejemplo 3:  $$Z\{f(k)\} = \sum_{k=0}^{\infty} f(k) \cdot z^{-k} = F(z)$$
+##💡 Ejemplo 6:  $$Z\{f(k)\} = \sum_{k=0}^{\infty} f(k) \cdot z^{-k} = F(z)$$
 
 Para solucionar las ecuacoines en diferencias por transformada Z, se usa un proceso similar a la ecuaciones diferenciales:
 * Aplicar la transformada Z a la ecuacion
@@ -290,13 +294,13 @@ Para solucionar las ecuacoines en diferencias por transformada Z, se usa un proc
 Estas transformadas pueden llegar a tener atrasos ($$f(k-n)$$) y adelantados ($$f(k+n)$$), donde n es la cantidad de veces del desplazamiento.
 ### Atrasos
 Un atraso en una señal corresponde al desplazamiento de la funcion a la derecha, osea hacia el lado positvo de la señal. Y su transformada Z es: 
-##💡 Ejemplo 4:  $$Z\{f(k-1)\} = z^{-1}*(f(-1)z + F(z))$$
+##💡 Ejemplo 7:  $$Z\{f(k-1)\} = z^{-1}*(f(-1)z + F(z))$$
 ### Adelantos
 Por otro lado un adelanto en una señal corresponde al desplazamiento de la funcion a la izquierda, osea hacia el lado negativo de la señal. Y su transformada Z es:
-##💡 Ejemplo 5:  $$Z\{f(k+1)\} = z(F(z) - f(0))$$
+##💡 Ejemplo 8:  $$Z\{f(k+1)\} = z(F(z) - f(0))$$
 ### Funcion de transferencia en tiempo discreto
 La función de transferencia es la relación que existe entre la salida y la entrada de un sistema. 
-##💡 Ejemplo 6:  $$H(z)=\frac{Y(z)}{X(z)}$$
+##💡 Ejemplo 9:  $$H(z)=\frac{Y(z)}{X(z)}$$
 ### 💡Ejemplo clase 1:
 * Encontrar la funcion de transferencia de la siguiente ecuacion:
   
@@ -597,6 +601,24 @@ Después de obtener los tres valores al final del arreglo de Jury, se evaluan la
 4. Y en el caso de la Img.12, el ultimo valor a evaluar será $$\left| r_{0} \right| = \left| r_{2} \right|$$
 >🔑 Condición: Si al menos una no se cumple, el sistema es inmediatamente INESTABLE.
 
+## 💡Ejemplo 4: 
+
+
+## 💡Ejemplo 5: 
+
+# 📚Ejercicios 
+1. Se tiene a siguiente función de transferencia:
+   $$G(z)=\frac{2+0.5z^{-1}-0.2z^{-2}}{1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3}$$
+   * Se transforman las z negativas a positivas para poder realizar de una manera más efectiva el análisis de estabilidad, entonces:
+     $$G(z)=\frac{z^{3}*(2+0.5z^{-1}-0.2z^{-2})}{z^{3}*(1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3})}$$
+     $$G(z)=\frac{2z^{3}+0.5z^{2}-0.2z}{1z^{3}-0.5z^{2}+0.3z-0.1}}$$
+   * Teniendo en z positivas se procede a analizar las condiciones del Test de Jury
+     1. $$2>0$$ (Correcto)
+     2. $$|-0.1| < 2$$ (Correcto)
+     3. $$P(z)|_{z=1} =  > 0$$ (Correcto)
+     4. $$P(z)|_{z=-1} = 0.6 > 0$$ (Para n par, correcto)
+  * Al no tener una condicion que no se cumpla, se procede a hacer el arreglo de Jury
+    
 
 
 
