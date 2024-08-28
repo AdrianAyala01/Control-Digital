@@ -712,7 +712,7 @@ $$D(z)= a_{0}z^{n}+a_{1}z^{n-1}+...+a_{n-1}z+a_{n}$$
 5. Construir arreglo de Jury. Con tres términos al final se termina de realizar el arreglo.
 >🔑 Condición: Si al menos una no se cumple, el sistema es inmediatamente INESTABLE.
 
-####2.1.2 Criterio de estabilidad de Jury
+#### 2.1.2 Criterio de estabilidad de Jury
 
 ![Figura de prueba](ESTABILIDADLP.PNG)
 
