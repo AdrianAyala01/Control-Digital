@@ -607,10 +607,19 @@ Después de obtener los tres valores al final del arreglo de Jury, se evaluan la
 ## 💡Ejemplo 5: 
 
 # 📚Ejercicios 
-1. Se tiene a siguiente función de transferencia:
+1. Se tiene la siguiente función de transferencia:
+   $$G(z)=\frac{3z^{2}+2z+1}{z^{3}-0.7z^{2}+0.2z-0.1}$$
+   *Se iguala a 0 el denominador y se obtienen los siguientes polos:
+   $$z=0.5, z=0.2+0.4j,z=0.2-0.4j$$
+   * El sistema es ESTABLE porque los polos están dentro del circulo unitario.
+     
+  ![Figura de prueba](ESTABILIDADLP.PNG)
+
+    Figura 13.Region de estabilidad función de transferencia.
+     
+3. Se tiene a siguiente función de transferencia:
    $$G(z)=\frac{2+0.5z^{-1}-0.2z^{-2}}{1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3}}$$
    * Se transforman las z negativas a positivas para poder realizar de una manera más efectiva el análisis de estabilidad, entonces:
-     $$G(z)=\frac{z^{3}*(2+0.5z^{-1}-0.2z^{-2})} {z^{3}*(1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3})}$$
      $$G(z)=\frac{2z^{3}+0.5z^{2}-0.2z}{1z^{3}-0.5z^{2}+0.3z-0.1}$$
    * Teniendo en z positivas se procede a analizar las condiciones del Test de Jury
      1. $$2>0$$ (Correcto)
@@ -618,7 +627,15 @@ Después de obtener los tres valores al final del arreglo de Jury, se evaluan la
      3. $$P(z)|_{z=1} = 0.7 > 0$$ (Correcto)
      4. $$P(z)|_{z=-1} = -1.9 < 0$$ (Para n impar, correcto)
   * Al no tener una condicion que no se cumpla, se procede a hacer el arreglo de Jury
-    
+
+    ![Figura de prueba](ESTABILIDADLP.PNG)
+
+    Figura 14. Tabla arreglo de Jury ejercicio 2.
+
+ * Al tener 3 valores al finalizar la tabla, se analizan las otras condiciones:
+   1. $$|-0.99| > |-0.25|$$ (Correcto)
+ * Se concluye que el sistema es ESTABLE
+   
     
 
 
