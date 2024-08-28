@@ -443,119 +443,78 @@ El método de invarianza al impulso consiste en un sistema discreto que, al apli
 
 Para este método se igualan las transformadas inversas tanto de Laplace como de la transformada Z:
 
-$$
-Z^{-1}\left[C(z) \cdot \frac{z}{z-1}\right] = L^{-1}\left[C(s) \cdot \frac{1}{s}\right]
-$$
+$$Z^{-1}\left[C(z) \cdot \frac{z}{z-1}\right] = L^{-1}\left[C(s) \cdot \frac{1}{s}\right]$$
 
 Al despejar la transformada Z:
 
-$$
-C(z) = \frac{z-1}{z} \cdot Z\left[L^{-1}\left(C(s) \cdot \frac{1}{s}\right)\right]
-$$
+$$C(z) = \frac{z-1}{z} \cdot Z\left[L^{-1}\left(C(s) \cdot \frac{1}{s}\right)\right]}$$
 
 💡 Ejemplo 2:
 
-$$
-C(s) = \frac{2(s-2)}{(s+1)(s+3)}
-$$
+$$C(s) = \frac{2(s-2)}{(s+1)(s+3)}$$
 
 - Se divide por \( s \) para obtener la respuesta al escalón:
 
-  $$
-  \frac{C(s)}{s} = \frac{2(s-2)}{s(s+1)(s+3)}
-  $$
+  $$ \frac{C(s)}{s} = \frac{2(s-2)}{s(s+1)(s+3)}$$
 
 - Se aplican fracciones parciales:
 
-  $$
-  C(s) = \frac{-4/3}{s} - \frac{3}{s+1} - \frac{5/3}{s+3}
-  $$
+  $$C(s) = \frac{-4/3}{s} - \frac{3}{s+1} - \frac{5/3}{s+3}$$
 
 - La respuesta al paso en el tiempo es:
 
-  $$
-  L^{-1}\left[\frac{C(s)}{s}\right] = -\frac{4}{3} - 3 e^{-t} - \frac{5}{3} e^{-3t}
-  $$
+  $$L^{-1}\left[\frac{C(s)}{s}\right] = -\frac{4}{3} - 3 e^{-t} - \frac{5}{3} e^{-3t}$$
 
 - Por tablas de la transformada Z:
 
-  $$
-  Z\left(L^{-1}\left[\frac{C(s)}{s}\right]\right) = -\frac{4z}{3(z-1)} - \frac{3z}{z-e^{-T}} - \frac{5z}{3(z-e^{-3T})}
-  $$
+  $$Z\left(L^{-1}\left[\frac{C(s)}{s}\right]\right) = -\frac{4z}{3(z-1)} - \frac{3z}{z-e^{-T}} - \frac{5z}{3(z-e^{-3T})}$$
 
 - De la definición:
 
-  $$
-  C(z) = \frac{z-1}{z} \left(-\frac{4z}{3(z-1)} - \frac{3z}{z-e^{-T}} - \frac{5z}{3(z-e^{-3T})}\right)
-  $$
+  $$C(z) = \frac{z-1}{z} \left(-\frac{4z}{3(z-1)} - \frac{3z}{z-e^{-T}} - \frac{5z}{3(z-e^{-3T})}\right)$$
 
 - Resolviendo:
 
-  $$
-  C(z) = \frac{0.116z - 0.523}{z^2 - 0.803z + 0.135}
-  $$
+  $$C(z) = \frac{0.116z - 0.523}{z^2 - 0.803z + 0.135}$$
 
 ## 3. Método Euler Adelante
 
 - La derivada en tiempo discreto se puede expresar de la siguiente manera:
 
-  $$
-  \frac{d}{dkT} x(kT) = \frac{x(k+1) - x(k)}{T}
-  $$
+  $$\frac{d}{dkT} x(kT) = \frac{x(k+1) - x(k)}{T}$$
 
 - Se sabe que:
 
-  $$
-  L\left[\frac{d}{dt} x(t)\right] = X(s)
-  $$
+  $$L\left[\frac{d}{dt} x(t)\right] = X(s)$$
 
 - Al aplicar la transformada Z:
 
-  $$
-  Z\left[\frac{x(k+1) - x(k)}{T}\right] = \frac{z - 1}{T} X(z)
-  $$
+  $$Z\left[\frac{x(k+1) - x(k)}{T}\right] = \frac{z - 1}{T} X(z)$$
 
 - Se obtiene:
 
-  $$
-  s X(s) = \frac{z - 1}{T} X(z)
-  $$
+  $$s X(s) = \frac{z - 1}{T} X(z)$$
 
-  $$
-  s = \frac{z - 1}{T}
-  $$
+  $$ s = \frac{z - 1}{T} $$
 
 - En este método, un controlador estable en tiempo continuo no siempre es estable en tiempo discreto.
 
 ## 4. Método Euler Atrás
-
 - La derivada en tiempo discreto se puede expresar de la siguiente manera:
 
-  $$
-  \frac{d}{dkT} x(kT) = \frac{x(k) - x(k-1)}{T}
-  $$
+  $$\frac{d}{dkT} x(kT) = \frac{x(k) - x(k-1)}{T} $$
 
 - Se sabe que:
-
-  $$
-  L\left[\frac{d}{dt} x(t)\right] = X(s)
-  $$
+  $$L\left[\frac{d}{dt} x(t)\right] = X(s)$$
 
 - Al aplicar la transformada Z:
-
-  $$
-  Z\left[\frac{x(k) - x(k-1)}{T}\right] = \frac{1 - z^{-1}}{T} X(z)
-  $$
+  $$Z\left[\frac{x(k) - x(k-1)}{T}\right] = \frac{1 - z^{-1}}{T} X(z)$$
 
 - Se obtiene:
 
-  $$
-  s X(s) = \frac{1 - z^{-1}}{T} X(z)
-  $$
+  $$s X(s) = \frac{1 - z^{-1}}{T} X(z)$$
 
-  $$
-  s = \frac{1 - z^{-1}}{T} = \frac{z - 1}{Tz}
-  $$
+  $$s = \frac{1 - z^{-1}}{T} = \frac{z - 1}{Tz}$$
 
 - En este método, un controlador estable en tiempo continuo es estable en tiempo discreto.
 
@@ -563,15 +522,11 @@ $$
 
 - La equivalencia es:
 
-  $$
-  s = \frac{2(z - 1)}{T(z + 1)}
-  $$
+  $$s = \frac{2(z - 1)}{T(z + 1)}$$
 
 - O también:
 
-  $$
-  z = \frac{1 + \frac{Ts}{2}}{1 - \frac{Ts}{2}}
-  $$
+  $$z = \frac{1 + \frac{Ts}{2}}{1 - \frac{Ts}{2}}$$
 
 ## Ejercicios
 
