@@ -813,12 +813,8 @@ No se está cumpliendo con el criterio de al se $$n$$ un número impar debe ser 
    $$G(z)=\frac{3z^{2}+2z+1}{z^{3}-0.7z^{2}+0.2z-0.1}$$
    *Se iguala a 0 el denominador y se obtienen los siguientes polos:
    $$z=0.5, z=0.2+0.4j,z=0.2-0.4j$$
-   * El sistema es ESTABLE porque los polos están dentro del circulo unitario.
-     
-  ![Figura de prueba](ESTABILIDADLP.PNG)
-
-    Figura 13.Region de estabilidad función de transferencia.
-     
+   * El sistema es ESTABLE porque los polos están dentro del círculo unitario.
+   * 
 3. Se tiene a siguiente función de transferencia:
    $$G(z)=\frac{2+0.5z^{-1}-0.2z^{-2}}{1-0.5z^{-1}+0.3z^{-2}-0.1z^{-3}}$$
    * Se transforman las z negativas a positivas para poder realizar de una manera más efectiva el análisis de estabilidad, entonces:
@@ -828,11 +824,11 @@ No se está cumpliendo con el criterio de al se $$n$$ un número impar debe ser 
      2. $$|-0.1| < 2$$ (Correcto)
      3. $$P(z)|_{z=1} = 0.7 > 0$$ (Correcto)
      4. $$P(z)|_{z=-1} = -1.9 < 0$$ (Para n impar, correcto)
-  * Al no tener una condicion que no se cumpla, se procede a hacer el arreglo de Jury
+  * Al no tener una condición que no se cumpla, se procede a hacer el arreglo de Jury
 
     ![Figura de prueba](ESTABILIDADLP.PNG)
 
-    Figura 14. Tabla arreglo de Jury ejercicio 2.
+    Figura 13. Tabla arreglo de Jury ejercicio 2.
 
  * Al tener 3 valores al finalizar la tabla, se analizan las otras condiciones:
    1. $$|-0.99| > |-0.25|$$ (Correcto)
