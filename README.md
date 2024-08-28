@@ -254,7 +254,7 @@ Para expresar una función de tiempo continuo en tiempo discreto, se introduce u
 
 #### 💡 Ejemplo 1
 
-\[ f(t) = f(kT) \]
+\$$f(t) = f(kT)$$\
 
 ### 2. Ecuación en Diferencias
 
