@@ -242,8 +242,7 @@ El objetivo fundamental de un conversor es servir como un puente entre el mundo 
 [3] “DAC Con Resistencias Ponderadas,” Scribd. [Online]. Available: https://es.scribd.com/document/343360980/DAC-Con-Resistencias-Ponderadas. [Accessed: 10-Aug-2024].
 [4] V. T. las E. De msavalos, “¿Cómo funciona un Conversor Digital-Analógico (DAC) R2R?,” Electrónica + Programación + GNU/Linux, 19-Jan-2021. [Online]. Available: https://electronlinux.wordpress.com/2021/01/19/como-funciona-un-conversor-digital-analogico-dac-r2r/. [Accessed: 10-Aug-2024].
 
-# 08/08/24
-
+08/08/24
 ## Transformada Z de Adelantos y Atrasos
 
 En esta clase se abordó la Transformada Z y su aplicación en la representación matemática de sistemas mediante la solución de ecuaciones en diferencias. Se estudiaron los conceptos de adelantos y atrasos en señales, así como las funciones de transferencia discretas correspondientes.
@@ -391,6 +390,262 @@ La Transformada Z es esencial para el análisis y diseño de sistemas discretos,
 
 [1] “AulasVirtualesECCI: Entrar al sitio”, Edu.co. [En línea]. Disponible: https://aulas.ecci.edu.co/course/view.php?id=9304 . [Consulta: 20 de agosto de 2024].
 
+15/08/24
+# Discretización en Controladores Analógicos
+Se trata de expresar una señal analógica en continua teniendo un balance entre el espacio de Laplace y la transformada Z. Para ello, existen varios métodos.
+
+## 1. Método de Invarianza al Impulso
+El método de invarianza al impulso consiste en un sistema discreto que, al aplicarle un impulso, su salida sea idéntica a la función de transferencia del sistema en los instantes de muestreo.
+
+- Se tiene una función estrictamente propia en tiempo continuo \( C(s) \) y un tiempo de muestreo \( T \) muy pequeño:
+
+  $$
+  C(z) = T \cdot Z\left[L^{-1}\left(C(s)\right)_{t=KT}\right]
+  $$
+
+  💡 Ejemplo 1:
+
+  $$
+  C(s) = \frac{5(s+2)}{(s+1)(s+10)}
+  $$
+
+- Aplicando fracciones parciales:
+
+  $$
+  C(s) = \frac{5/9}{s+1} + \frac{40/9}{s+10}
+  $$
+
+- Usando la transformada inversa de Laplace, se obtiene:
+
+  $$
+  L^{-1}(C(s)) = \frac{5}{9} e^{-t} + \frac{40}{9} e^{-10t}
+  $$
+
+- Discretizando la expresión:
+
+  $$
+  L^{-1}(C(s))_{t=kT} = \frac{5}{9} e^{-kT} + \frac{40}{9} e^{-10kT}
+  $$
+
+- Por lo tanto:
+
+  $$
+  C(z) = T \cdot Z\left(\frac{5}{9} e^{-kT} + \frac{40}{9} e^{-10kT}\right)
+  $$
+
+- De las tablas de la transformada Z se obtiene:
+
+  $$
+  C(z) = T \left(\frac{5z}{9(z-e^{-T})} + \frac{40z}{9(z-e^{-10T})}\right)
+  $$
+
+## 2. Método de Invarianza al Paso
+
+Para este método se igualan las transformadas inversas tanto de Laplace como de la transformada Z:
+
+$$
+Z^{-1}\left[C(z) \cdot \frac{z}{z-1}\right] = L^{-1}\left[C(s) \cdot \frac{1}{s}\right]
+$$
+
+Al despejar la transformada Z:
+
+$$
+C(z) = \frac{z-1}{z} \cdot Z\left[L^{-1}\left(C(s) \cdot \frac{1}{s}\right)\right]
+$$
+
+💡 Ejemplo 2:
+
+$$
+C(s) = \frac{2(s-2)}{(s+1)(s+3)}
+$$
+
+- Se divide por \( s \) para obtener la respuesta al escalón:
+
+  $$
+  \frac{C(s)}{s} = \frac{2(s-2)}{s(s+1)(s+3)}
+  $$
+
+- Se aplican fracciones parciales:
+
+  $$
+  C(s) = \frac{-4/3}{s} - \frac{3}{s+1} - \frac{5/3}{s+3}
+  $$
+
+- La respuesta al paso en el tiempo es:
+
+  $$
+  L^{-1}\left[\frac{C(s)}{s}\right] = -\frac{4}{3} - 3 e^{-t} - \frac{5}{3} e^{-3t}
+  $$
+
+- Por tablas de la transformada Z:
+
+  $$
+  Z\left(L^{-1}\left[\frac{C(s)}{s}\right]\right) = -\frac{4z}{3(z-1)} - \frac{3z}{z-e^{-T}} - \frac{5z}{3(z-e^{-3T})}
+  $$
+
+- De la definición:
+
+  $$
+  C(z) = \frac{z-1}{z} \left(-\frac{4z}{3(z-1)} - \frac{3z}{z-e^{-T}} - \frac{5z}{3(z-e^{-3T})}\right)
+  $$
+
+- Resolviendo:
+
+  $$
+  C(z) = \frac{0.116z - 0.523}{z^2 - 0.803z + 0.135}
+  $$
+
+## 3. Método Euler Adelante
+
+- La derivada en tiempo discreto se puede expresar de la siguiente manera:
+
+  $$
+  \frac{d}{dkT} x(kT) = \frac{x(k+1) - x(k)}{T}
+  $$
+
+- Se sabe que:
+
+  $$
+  L\left[\frac{d}{dt} x(t)\right] = X(s)
+  $$
+
+- Al aplicar la transformada Z:
+
+  $$
+  Z\left[\frac{x(k+1) - x(k)}{T}\right] = \frac{z - 1}{T} X(z)
+  $$
+
+- Se obtiene:
+
+  $$
+  s X(s) = \frac{z - 1}{T} X(z)
+  $$
+
+  $$
+  s = \frac{z - 1}{T}
+  $$
+
+- En este método, un controlador estable en tiempo continuo no siempre es estable en tiempo discreto.
+
+## 4. Método Euler Atrás
+
+- La derivada en tiempo discreto se puede expresar de la siguiente manera:
+
+  $$
+  \frac{d}{dkT} x(kT) = \frac{x(k) - x(k-1)}{T}
+  $$
+
+- Se sabe que:
+
+  $$
+  L\left[\frac{d}{dt} x(t)\right] = X(s)
+  $$
+
+- Al aplicar la transformada Z:
+
+  $$
+  Z\left[\frac{x(k) - x(k-1)}{T}\right] = \frac{1 - z^{-1}}{T} X(z)
+  $$
+
+- Se obtiene:
+
+  $$
+  s X(s) = \frac{1 - z^{-1}}{T} X(z)
+  $$
+
+  $$
+  s = \frac{1 - z^{-1}}{T} = \frac{z - 1}{Tz}
+  $$
+
+- En este método, un controlador estable en tiempo continuo es estable en tiempo discreto.
+
+## 5. Método Trapezoidal o "Tustin"
+
+- La equivalencia es:
+
+  $$
+  s = \frac{2(z - 1)}{T(z + 1)}
+  $$
+
+- O también:
+
+  $$
+  z = \frac{1 + \frac{Ts}{2}}{1 - \frac{Ts}{2}}
+  $$
+
+## Ejercicios
+
+### Invarianza al Paso
+
+$$
+H(s) = \frac{10(s + 1)}{(s + 3)(s + 7)}
+$$
+
+- Se divide por \( s \) para obtener la respuesta al escalón:
+
+  $$
+  \frac{H(s)}{s} = \frac{10(s + 1)}{s(s + 3)(s + 7)}
+  $$
+
+- Se aplican fracciones parciales:
+
+  $$
+  H(s) = \frac{10}{21s} - \frac{5}{3(s + 3)} - \frac{15}{7(s + 7)}
+  $$
+
+- La respuesta al paso en el tiempo es:
+
+  $$
+  L^{-1}\left[\frac{H(s)}{s}\right] = \frac{10}{21} - \frac{5}{3} e^{-3t} - \frac{15}{7} e^{-7t}
+  $$
+
+- Por tablas de la transformada Z:
+
+  $$
+  Z\left(L^{-1}\left[\frac{H(s)}{s}\right]\right) = \frac{10z}{21(z - 1)} - \frac{5z}{3(z - e^{-3T})} - \frac{15z}{7(z - e^{-7T})}
+  $$
+
+- De la definición:
+
+  $$
+  C(z) = \frac{z - 1}{z} \left(\frac{10z}{21(z - 1)} - \frac{5z}{3(z - e^{-3T})} - \frac{15z}{7(z - e^{-7T})}\right)
+  $$
+
+### Método Euler Adelante
+
+$$
+D(s) = \frac{2s + 4}{s^2 + 4s + 8}
+$$
+
+- Se sabe que:
+
+  $$
+  s = \frac{z - 1}{T}
+  $$
+
+- Se sustituye \( s \) en \( D(s) \) para obtener \( D(z) \):
+
+  $$
+  D(z) = \frac{2 \frac{z - 1}{T} + 4}{\left(\frac{z - 1}{T}\right)^2 + 4 \frac{z - 1}{T} + 8}
+  $$
+
+- Tomando \( T = 1 \):
+
+  $$
+  D(z) = \frac{2(z - 1) + 4}{(z - 1)^2 + 4(z - 1) + 8} = \frac{2z - 2 + 4}{z^2 - 2z + 1 + 4z - 4 + 8}
+  $$
+
+- Simplificando:
+  $$ D(z) = \frac{2z + 2}{z^2 + 2z + 5} $$
+  
+## Conclusión
+La elección del método de discretización depende de las características del sistema y de los requisitos específicos del control. Para aplicaciones donde la estabilidad es crítica, el método de Euler Atrás o el método Tustin son preferibles. Si la respuesta a un impulso o escalón es prioritaria, los métodos de invarianza al impulso o al paso son más adecuados.
+
+## Referencias
+
+[1] “AulasVirtualesECCI: Entrar al sitio”, Edu.co. [En línea]. Disponible: https://aulas.ecci.edu.co/course/view.php?id=9304. [Consulta: 20 de agosto de 2024].
+
+
 22/08/2024
 # ESTABILIDAD EN SISTEMAS DISCRETOS 
 La estabilidad es un concepto clave en el análisis de sistemas de control de movimiento que evolucionan en intervalos discretos de tiempo, ya que un sistema discreto se considera estable si su respuesta a una entrada se mantiene acotada conforme avanza el tiempo. En este contexto, el análisis en el espacio de Laplace mantiene el mismo concepto de estabilidad, aunque la representación de la frontera de estabilidad cambia: En lugar de estar representada por el eje vertical, se representa mediante un círculo en el plano z. Para evaluar la estabilidad de estos sistemas discretos, se utilizan diferentes enfoques, como la estabilidad asintótica, la estabilidad BIBO (Bounded Input-Bounded Output) y el criterio de estabilidad de Jury.
@@ -489,9 +744,69 @@ Después de obtener los tres valores al final del arreglo de Jury, se evaluan la
 >🔑 Condición: Si al menos una no se cumple, el sistema es inmediatamente INESTABLE.
 
 ## 💡Ejemplo 4: 
+Una vez comprendidos los criterios de estabilidad de Jury, se presenta el siguiente ejemplo:
+* Polinomio característico:
+$$z^{4} - 1.2z^{3} + 0.07z^{2} + 0.3z - 0.08 = 0$$
 
+* Evaluación de condiciones: 
+1. $$a_{0} > 0 $$, en este caso: $$1 > 0$$
+2. $$|a_{n}| < a_{0}$$, en este caso: $$0.08 < 1$$
+3. $$P(z)|_{z=1}$$, en este caso: $$(1)^{4} - 1.2*(1)^{3} + 0.07*(1)^{2} + 0.3*(1) - 0.08 = 0.09 > 0$$
+4. $$P(z)|_{z=-1}$$, en este caso: $$(-1)^{4} - 1.2*(-1)^{3} + 0.07*(-1)^{2} + 0.3*(-1) - 0.08 = 1.89 > 0$$
+
+* Cumplimiento de las condiciones, se construye el arreglo de Jury:
+  
+$$z^{4} - 1.2z^{3} + 0.07z^{2} + 0.3z - 0.08 = 0$$
+
+
+| $$z^{0}$$  | $$z^{1}$$ | $$z^{2}$$  | $$z^{3}$$ | $$z^{4}$$ |
+| ------ | ------ | ------ | ------ | ------ |
+| -0.08  | 0.3 | 0.07 | -1.2 | 1 |
+| 1 | -1.2  | 0.07 | 0.3 | -0.08 |
+
+Realiza el calculo de las determinantes:
+
+* (-0.08)(-1.2) - (1)(0.3) = -0.204
+* (-0.08)(0.07) - (1)(0.07) = -0.0756
+* (-0.08)(0.3) - (1)(-1.2) = 1.176
+* (-0.08)(-0.08) - (1)(1) = -0.994
+
+| $$z^{0}$$  | $$z^{1}$$ | $$z^{2}$$  | $$z^{3}$$ | $$z^{4}$$ |
+| ------ | ------ | ------ | ------ | ------ |
+| -0.08  | 0.3 | 0.07 | -1.2 | 1 |
+| 1 | -1.2  | 0.07 | 0.3 | -0.08 |
+| ------ | ------ | ------ | ------ | ------ |
+| -0.994 | 1.176 | -0.0756 | -0.204 |
+| -0.204 | -0.0756  | 1.176 | -0.994 |
+
+
+* (-0.994)(-0.0756) - (-0.204)(1.176) = 0.315
+* (-0.994)(1.176) - (-0.204)(-0.0756) = -1.184
+* (-0.994)(-0.994) - (0.204)(0.204) = 0.946
+
+| $$z^{0}$$  | $$z^{1}$$ | $$z^{2}$$  | $$z^{3}$$ | $$z^{4}$$ |
+| ------ | ------ | ------ | ------ | ------ |
+| -0.08  | 0.3 | 0.07 | -1.2 | 1 |
+| 1 | -1.2  | 0.07 | 0.3 | -0.08 |
+| ------ | ------ | ------ | ------ | ------ |
+| -0.994 | 1.176 | -0.0756 | -0.204 |
+| -0.204 | -0.0756  | 1.176 | -0.994 |
+| ------ | ------ | ------ | ------ | ------ |
+| 0.946 | -1.184  | 0.315 |
+
+$$|-0.994| > |-0.204|$$
+$$|-0.946| > |0.315|$$
+
+Con relación a lo obtenido se determina que este sistema es estable.
 
 ## 💡Ejemplo 5: 
+$$z^{5} + 2.6z^{4} + 0.56z^{3} -2.05z^{2} + 0.0775z + 0.35 = 0$$
+1. $$1 > 0$$
+2. $$0.35 < 1$$
+3. $$P(z)|_{z=1}$$, en este caso: $$(1)^{5} + 2.6*(1)^{4} + 0.56*(1)^{3} - 2.05*(1)^{2} + 0.0775*(1) + 0.35 = 1.41 > 0$$
+4. $$P(z)|_{z=-1}$$, en este caso: $$(-1)^{5} + 2.6*(-1)^{4} + 0.56*(-1)^{3} - 2.05*(-1)^{2} + 0.0775*(-1) + 0.35 = 0.382 > 0$$
+
+No se está cumpliendo con el criterio de al se $$n$$ un número impar debe ser menor a 0. Por ende, el sistema es inestable
 
 # 📚Ejercicios 
 1. Se tiene la siguiente función de transferencia:
