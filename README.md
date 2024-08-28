@@ -615,9 +615,10 @@ Después de obtener los tres valores al final del arreglo de Jury, se evaluan la
    * Teniendo en z positivas se procede a analizar las condiciones del Test de Jury
      1. $$2>0$$ (Correcto)
      2. $$|-0.1| < 2$$ (Correcto)
-     3. $$P(z)|_{z=1} =  > 0$$ (Correcto)
-     4. $$P(z)|_{z=-1} = 0.6 > 0$$ (Para n par, correcto)
+     3. $$P(z)|_{z=1} = 0.7 > 0$$ (Correcto)
+     4. $$P(z)|_{z=-1} = -1.9 < 0$$ (Para n impar, correcto)
   * Al no tener una condicion que no se cumpla, se procede a hacer el arreglo de Jury
+    
     
 
 
