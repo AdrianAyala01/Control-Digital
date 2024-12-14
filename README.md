@@ -792,4 +792,31 @@ No se está cumpliendo con el criterio de al se $$n$$ un número impar debe ser 
     
 
 
+01/08/2024
+# Señales Analógicas y Digitales y convertidores ADC y DAC 
+
+
+
+## 1. Señales Analógicas y Digitales
+### 1.1 Señales Análogicas: 
+>🔑 *Definición:* Señal continua que puede tomar cualquier valor en el dominio del tiempo.
+>🔑 *Caracteristicas:* Es muy limitado, pero es más exacto que el digital.
+### 1.2 Señales Digitales:
+>🔑 *Definición:* Solo tiene 2 posibles valores o estados. Este tipo de señales tiene forma de onda cuadrada.
+>🔑 *Caracteristicas:* *La exactitud
+* Errores de implementaciöm.
+* Flexibilidad (Solo necesita cambio de software).
+* Velocidad (Tiempo real. más baja que la análoga).
+* Costos (Más barata).
+
+![Figura de prueba](images/plantilla/Captura2.PNG)
+
+Figura 1. Figura de prueba
+
+## 2. Conversión Análoga a Digital
+
+
+
+
+
 
